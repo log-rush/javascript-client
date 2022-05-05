@@ -26,7 +26,7 @@ export class LogRushClient {
   public async deleteStream(id: string): Promise<void> {
     const stream = this.streams[id];
     if (!stream) return;
-    const response = await stream.register();
+    const response = await stream.destroy();
     if ('message' in response && response.message) {
       console.error(response.message);
     } else {

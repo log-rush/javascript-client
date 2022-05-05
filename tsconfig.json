@@ -1,15 +1,13 @@
 {
   "compilerOptions": {
+    "//": "only dev config",
+    "noEmit": true,
     "target": "ES6",
-    "lib": ["DOM", "ES6"],
+    "lib": ["DOM", "ES2015"],
     "module": "CommonJS",
     "rootDir": "./src",
     "baseUrl": "./src",
-    "declaration": true,
-    "sourceMap": true,
-    "outDir": "./dist/node/",
     "types": ["node", "isomorphic-fetch"],
-    "removeComments": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,

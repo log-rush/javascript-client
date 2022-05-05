@@ -27,7 +27,7 @@ export class LogRushClient {
     const stream = this.streams[id];
     if (!stream) return;
     const response = await stream.destroy();
-    if ('message' in response && response.message) {
+    if (response && 'message' in response && response.message) {
       console.error(response.message);
     } else {
       delete this.streams[stream.id];

@@ -17,6 +17,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rm -rf dist && tsc -p tsconfig.node.json && tsc -p tsconfig.browser.json",
+    "build:browser": "tsc -p tsconfig.browser.json",
+    "build:node": "tsc -p tsconfig.node.json",
     "format": "prettier --write \"src/**/*.ts\"",
     "prepare": "husky install"
   },

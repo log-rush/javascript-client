@@ -3,7 +3,10 @@ import { LogRushStream } from './stream';
 import { LogRushClientOptions } from './types';
 
 if (!isBrowser()) {
-  await import('isomorphic-fetch');
+  (async () => {
+    // @ts-ignore
+    await import('isomorphic-fetch');
+  })();
 }
 
 export { LogRushClient } from './client';

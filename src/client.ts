@@ -8,9 +8,33 @@ export class LogRushClient {
     this.streams = {};
   }
 
-  public async createStream(): Promise<LogRushStream> {}
+  public async createStream(name: string): Promise<LogRushStream> {
+    return await this.instantiateStream(name, undefined, undefined);
+  }
 
-  public async deleteStream(id: string): Promise<void> {}
+  public async resumeStream(name: string, id: string, key?: string): Promise<LogRushStream> {
+    return await this.instantiateStream(name, id, key);
+  }
 
-  public disconnect() {}
+  private async instantiateStream(name: string, id?: string, key?: string): Promise<LogRushStream> {
+    const stream = new LogRushStream(this.options, name, id, key);
+    await stream.register();
+    this.streams[stream.id] = stream;
+    return stream;
+  }
+
+  public async deleteStream(id: string): Promise<void> {
+    const stream = this.streams[id];
+    if (!stream) return;
+    const response = await stream.register();
+    if ('message' in response && response.message) {
+      console.error(response.message);
+    } else {
+      delete this.streams[stream.id];
+    }
+  }
+
+  public async disconnect(): Promise<void> {
+    await Promise.all(Object.values(this.streams).map(stream => this.deleteStream(stream.id)));
+  }
 }

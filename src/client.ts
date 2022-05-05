@@ -77,13 +77,14 @@ export class LogRushClient {
    *
    * @async
    * @param {string} id the id of the log stream to delete
+   * @param {boolean} [sendRemainingLogs=false] a boolean whether to send remaining logs in the current batch
    * @return {Promise<void>}  Promise<void>
    * @memberof LogRushClient
    */
-  public async deleteStream(id: string): Promise<void> {
+  public async deleteStream(id: string, sendRemainingLogs: boolean = false): Promise<void> {
     const stream = this.streams[id];
     if (!stream) return;
-    const response = await stream.destroy();
+    const response = await stream.destroy(sendRemainingLogs);
     if (response && 'message' in response && response.message) {
       console.error(response.message);
     } else {
@@ -95,10 +96,11 @@ export class LogRushClient {
    * delete all log streams registered wth this client
    *
    * @async
+   * @param {boolean} [sendRemainingLogs=false] a boolean whether to send remaining logs in the current batch
    * @return {Promise<void>}  Promise<void>
    * @memberof LogRushClient
    */
-  public async disconnect(): Promise<void> {
-    await Promise.all(Object.values(this.streams).map(stream => this.deleteStream(stream.id)));
+  public async disconnect(sendRemainingLogs: boolean = false): Promise<void> {
+    await Promise.all(Object.values(this.streams).map(stream => this.deleteStream(stream.id, sendRemainingLogs)));
   }
 }

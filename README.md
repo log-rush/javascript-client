@@ -11,6 +11,7 @@ or
 ## Usage
 
 ### Using the LogRushClient
+
 ```ts
 // 1. create a client
 const client = new LogRushClient({
@@ -25,13 +26,13 @@ const stream = await client.createStream('zwoo-frontend');
 // 3. log!
 stream.log('my awesome log')
 
-// x. clean up
-await client.disconnect()
+// 4. clean up
+await client.disconnect(true) // passing true as argument will force send all remaining logs
 ```
 
 ### Using the LogRushStream direct
-```ts
 
+```ts
 // 1. instantiate the stream
 const stream = createLogStream(
   {

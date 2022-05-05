@@ -1,5 +1,6 @@
 import { isBrowser } from './lib/isBrowser';
 import { LogRushStream } from './stream';
+import { LogRushClientOptions } from './types';
 
 if (!isBrowser()) {
   await import('isomorphic-fetch');
@@ -8,9 +9,13 @@ if (!isBrowser()) {
 export { LogRushClient } from './client';
 export { LogRushStream } from './stream';
 
-export async function createStream(name: string, id?: string, key?: string): Promise<LogRushStream> {
-  const stream = new LogRushStream(this.options, name, id, key);
+export async function createLogStream(
+  options: LogRushClientOptions,
+  name: string,
+  id?: string,
+  key?: string
+): Promise<LogRushStream> {
+  const stream = new LogRushStream(options, name, id, key);
   await stream.register();
-  this.streams[stream.id] = stream;
   return stream;
 }

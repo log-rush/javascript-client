@@ -56,7 +56,9 @@ export const LogRushHttpApi = {
     });
 
     if (req.status !== 200) {
-      throw new Error('cant log to stream ' + logStream + ' : ' + (await req.json()));
+      return {
+        message: 'cant log to stream ' + logStream + ' : ' + (await req.json()),
+      };
     }
 
     return (await req.json()) as LogRushApiErrorResponse | LogRushApiSuccessResponse;
@@ -81,7 +83,9 @@ export const LogRushHttpApi = {
     });
 
     if (req.status !== 200) {
-      throw new Error('cant log to stream ' + logStream + ' : ' + (await req.json()));
+      return {
+        message: 'cant log to stream ' + logStream + ' : ' + (await req.json()),
+      };
     }
 
     return (await req.json()) as LogRushApiErrorResponse | LogRushApiSuccessResponse;

@@ -1,6 +1,15 @@
 import { LogRushStream } from './stream';
 import { LogRushApiErrorResponse, LogRushApiSuccessResponse, LogRushLog } from './types';
 
+/**
+ * LogRushHttpApi
+ *
+ * an utility object containing all http calls for calling the log-rush api
+ *
+ * @export
+ * @constant
+ * @global
+ */
 export const LogRushHttpApi = {
   async registerStream(url: string, name: string, id?: string, key?: string): Promise<LogRushStream> {
     const req = await fetch(`${url}stream/register`, {

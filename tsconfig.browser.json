@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["dom", "es2015"],
+    "module": "es6",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist/browser",
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "skipLibCheck": true
+  }
+}

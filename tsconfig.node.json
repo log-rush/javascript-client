@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6"],
+    "module": "CommonJS",
+    "rootDir": "./src",
+    "baseUrl": "./src",
+    "declaration": true,
+    "sourceMap": true,
+    "outDir": "./dist/node/",
+    "types": ["node"],
+    "removeComments": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "alwaysStrict": true,
+    "allowUnreachableCode": false,
+    "skipLibCheck": true
+  }
+}

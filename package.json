@@ -1,0 +1,23 @@
+{
+  "name": "@log-rush/client",
+  "version": "0.0.0",
+  "description": "A log-rush client for javascript",
+  "repository": "github:log-rush/javascript-client",
+  "author": "Fabian Kachlock <contact@fabiankachlock.dev>",
+  "license": "MIT",
+  "main": "dist/node.js",
+  "browser": "dist/browser.js",
+  "files": ["dist/**"],
+  "engines": {
+    "yarn": ">=1.22 <2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "log-rush",
+    "logging",
+    "logs",
+    "remote-logging"
+  ]
+}

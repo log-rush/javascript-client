@@ -1,6 +1,6 @@
 {
   "name": "@log-rush/client",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A log-rush client for javascript",
   "repository": "github:log-rush/javascript-client",
   "author": "Fabian Kachlock <contact@fabiankachlock.dev>",

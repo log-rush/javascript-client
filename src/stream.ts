@@ -10,7 +10,7 @@ export class LogRushStream {
   }
 
   get secretKey(): string {
-    return this.secretKey;
+    return this.streamKey;
   }
 
   constructor(
@@ -24,7 +24,12 @@ export class LogRushStream {
 
   public async register(): Promise<LogRushApiErrorResponse | undefined> {
     try {
-      const stream = await LogRushHttpApi.registerStream(this.options.dataSourceUrl, this.streamId, this.streamKey);
+      const stream = await LogRushHttpApi.registerStream(
+        this.options.dataSourceUrl,
+        this.name,
+        this.streamId,
+        this.streamKey
+      );
       this.streamId = stream.id;
       this.streamKey = stream.secretKey;
       return undefined;

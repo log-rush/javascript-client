@@ -16,7 +16,7 @@ export const LogRushHttpApi = {
     });
 
     if (req.status !== 200) {
-      throw new Error('cant register log stream: ' + (await req.json()));
+      throw new Error('cant register log stream: ' + JSON.stringify(await req.json()));
     }
 
     return (await req.json()) as LogRushStream;
@@ -43,7 +43,7 @@ export const LogRushHttpApi = {
     logStream: string,
     log: LogRushLog
   ): Promise<LogRushApiErrorResponse | LogRushApiSuccessResponse> {
-    const req = await fetch(`${url}batch`, {
+    const req = await fetch(`${url}log`, {
       method: 'post',
       headers: {
         'Content-Type': 'application/json',
@@ -57,7 +57,7 @@ export const LogRushHttpApi = {
 
     if (req.status !== 200) {
       return {
-        message: 'cant log to stream ' + logStream + ' : ' + (await req.json()),
+        message: 'cant log to stream ' + logStream + ' : ' + JSON.stringify(await req.json()),
       };
     }
 
@@ -84,7 +84,7 @@ export const LogRushHttpApi = {
 
     if (req.status !== 200) {
       return {
-        message: 'cant log to stream ' + logStream + ' : ' + (await req.json()),
+        message: 'cant log to stream ' + logStream + ' : ' + JSON.stringify(await req.json()),
       };
     }
 

@@ -50,8 +50,9 @@ export class BatchQueue<T> {
    * @memberof BatchQueue
    */
   public async forceExecute(): Promise<void> {
-    await this.overflowHandler([...this.queue]);
+    const batchedItems = [...this.queue];
     this.queue = [];
+    await this.overflowHandler(batchedItems);
   }
 
   /**
